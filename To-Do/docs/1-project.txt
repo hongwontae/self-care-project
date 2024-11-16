@@ -1,0 +1,21 @@
+1. 설정
+1-1. npm install --save-dev @types/react @types/react-dom
+=> TS는 기본적으로 React의 JSX 타입을 알지 못합니다.
+=> @types/react 패키지는 JSX.IntrinsicElements, JSX.Element 등과 같은 JSX 타입을 정의하여 TS가 타입검사
+를 할 수 있게 해줍니다.
+=> JSX element implicitly has type 'any' 오류가 해결됩니다.
+
+1-2. 이제는 React.FC로 함수형 컴포넌트를 정의하지 않습니다.
+=> props를 직접 정의하고 함수형 컴포넌트를 작성하는 것이 권장됩니다.
+
+
+2 TS기반 useRef
+2-1. DOM를 참조할 떄는 useRef<HTMLInputElement, HTMLTextareaElement.. | null>(null)
+같이 타입을 선언해야 합니다. (마운트 전의 ref 값은 null이기 떄문에 이중 처리)
+
+2-2. 일반적인 값으로 사용하고 싶을 떄는 <number>나 <string>처럼 타입을 부여하면 됩니다.
+
+2-3. ref 값에 접근할 떄는 참조 값이 null일 수 있기 때문에 optional chaining을 사용하여 대체합니다.
+
+
+3. 
