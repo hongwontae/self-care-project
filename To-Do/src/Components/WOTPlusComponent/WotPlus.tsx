@@ -25,14 +25,15 @@ function WotPlus({mutate} : mutateType) {
   return (
     <>
       <div className="flex flex-col items-center">
-        <label className="text-3xl font-bold text-white mb-4 font-custom-Ubuntu">
+        <label htmlFor="wot" className="text-3xl font-bold text-custom-wot-label-color mb-4 font-custom-Ubuntu">
           Way of Thinking
         </label>
         <input
           ref={wotRef}
+          id="wot"
           onKeyDown={(e) => handleKeyDown(e)}
           type="text"
-          className="w-2/3 rounded-lg p-2 text-center text-black text-[1.2rem]"
+          className="w-2/3 rounded-lg p-2 text-center text-black text-[1.5rem] font-custon-Bangers"
         ></input>
       </div>
     </>

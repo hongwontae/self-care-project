@@ -14,14 +14,16 @@ export default {
         "custom-Ubuntu" : ['Ubuntu', 'sans-serif'],
         "custom-Doto" : ['Doto', 'sans-serif'],
         "custom-Oswald" : ['Oswald', 'sans-serif'],
-        "custom-Markazi" : ['Markazi', 'sans-serif']
+        "custom-Markazi" : ['Markazi', 'sans-serif'],
+        'custon-Bangers' : ['Bangers', 'sans-serif']
       },
       backgroundColor : {
         'custom-mordern' : '#847770',
         'custom-blue' : '#6e99ad'
       },
       textColor : {
-        'custom-letter-color' : '#111c3a'
+        'custom-letter-color' : '#111c3a',
+        'custom-wot-label-color' : '#c1a38f',
       },
       screens : {
         'max-plus-page-1' : {'max' : '600px'},

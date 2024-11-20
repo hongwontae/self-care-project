@@ -7,7 +7,7 @@ export async function nowMonthGetDays(){
     }
 
     const resData = await response.json();
-
+    console.log(resData);
 
     return resData;
 

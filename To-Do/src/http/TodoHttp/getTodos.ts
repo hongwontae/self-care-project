@@ -1,4 +1,4 @@
-import {Todo} from '../type/TodoInterface';
+import {Todo} from '../../type/TodoInterface';
 
 
 export async function getAllTodo(date? : string | null) : Promise<Todo[]>{
@@ -20,6 +20,6 @@ export async function getAllTodo(date? : string | null) : Promise<Todo[]>{
     }
 
     const resData = await response.json();
-
+    console.log(resData)
     return resData;
 }

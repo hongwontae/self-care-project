@@ -44,10 +44,12 @@ function TodoMainComponent({ data, dayData }: TodoMainComponentProps) {
           data.map((ele) => {
             const date = formatDate(ele.todo_departure);
             const sDate = formatDate(ele.todo_date);
+            const dateBool = new Date(ele.todo_date) < new Date()
+            console.log(dateBool)
             return (
               <div
                 key={ele.todo_id}
-                className={containerTailwind + ' overflow-hidden'}
+                className={containerTailwind + ' overflow-hidden' + ` ${dateBool ? 'bg-red-300' : null}`}
                 onClick={() => modalOpenHandler(ele)}
               >
                 <div className="font-bold text-white text-[1.4rem] sticky top-0 z-10 ">

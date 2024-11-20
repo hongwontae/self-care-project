@@ -1,17 +1,19 @@
 import { useRef } from "react";
 import  TodoForm from "../../Components/TodoPlusComponent/TodoForm";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { todoPost } from "../../http/TodoHttp/PostTodo";
 import {useNavigate} from 'react-router-dom';
 
 function ToDoPlusPage() {
 
   const navigate = useNavigate();
+  const queryCleint = useQueryClient();
 
   const { mutate } = useMutation({
     mutationFn: todoPost,
     onSuccess: () => {
       console.log('Success');
+      queryCleint.invalidateQueries({queryKey : ['todos']})
       navigate('/');
     },
     onError : (error)=>{

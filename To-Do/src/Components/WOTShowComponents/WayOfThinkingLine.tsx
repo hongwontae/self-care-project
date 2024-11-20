@@ -34,10 +34,10 @@ function WayOfThinkingLine({ item }: WayOfThinkingLinesProps) {
         lineData={lineData}
         modalDownHandler={modalDownHandler}
       ></WayOfThinkingModal>
-      <div className="bg-slate-400 p-2 w-3/5 text-center rounded-lg font-custom-Candal">
+      <div className="bg-slate-400 p-2 w-3/5 text-center rounded-lg font-custon-Bangers">
         <div
           onClick={() => modalOpenHandler(item.wotLine, item.wotId)}
-          className="text-2xl font-bold"
+          className="text-3xl font-bold text-custom-letter-color"
         >
           {item.wotLine}
         </div>

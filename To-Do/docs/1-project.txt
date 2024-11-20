@@ -18,4 +18,3 @@
 2-3. ref 값에 접근할 떄는 참조 값이 null일 수 있기 때문에 optional chaining을 사용하여 대체합니다.
 
 
-3. 
