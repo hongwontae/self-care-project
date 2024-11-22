@@ -1,6 +1,7 @@
 export interface getDataType {
     wotId : number;
     wotLine : string;
+    highlight : boolean;
     createdAt : string;
     updatedAt : string
 }

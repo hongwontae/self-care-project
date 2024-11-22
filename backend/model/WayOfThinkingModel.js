@@ -11,6 +11,10 @@ const WotModel = DB.define('way_of_thinking', {
     wotLine : {
         type : DataTypes.STRING,
         allowNull : false
+    },
+    highlight : {
+        type : DataTypes.BOOLEAN,
+        allowNull : false
     }
 })
 

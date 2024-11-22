@@ -1,0 +1,33 @@
+1. slice + typescript
+1-1. createSlice를 통해 Slice를 정의할 떄 초기값과 action에 대한 타입을 지정해야 합니다.
+=> interface initialState {isDate : string | null}
+=> action 객체는 내부에 type와 payload를 받습니다. 이를 미리 구현한 PayloadAction<T>를 사용해 타입을 
+정의합니다.
+
+1-2. slice를 설정한 이후에는 action과 reducer를 export해야 합니다.
+=> export한 action은 redux-state를 변경할 떄 dispatch와 함께 사용해야 합니다.
+(export const {setState} = nameSlice.actions)
+=> reducer
+
+
+2. action 객체와 type/payload
+=> useDispatch를 통해서 slice의 setFunc를 실행하고 인자를 넣을 떄 type은 자동으로 생성됩니다.
+=> 그리고 인자는 어떤 구조화를 하지 않고 그대로 넣어야 합니다. {type : '자동 식별', payload : '인자'} 자동으로
+설정되기 떄문입니다.
+
+
+3. 액션 크리에어터와 리듀서의 차이
+3-1. 액션 크리에이터 : 액션을 생성하는 함수입니다. 액션 객체는 대체로 {type:.., payload:...} 형태를 갖춥니다.
+=> type은 액션의 종류를 설명합니다./ payload는 상태를 변경하는데 필요한 값입니다.
+=> createSlice를 통해 액션 크리에이터를 자동으로 생성합니다. 
+=> reducers : {
+    setFucntion : ()=>{},
+    setFunction2 : ()=>{},
+} => setFunction이 액션 크리에이터입니다. 자동으로 액션 객체를 생성하기 때문입니다.
+
+3-2. 리듀서 : 상태를 변경하는 함수입니다. 액션 객체를 받아서 새로운 상태로 변환합니다.
+=> 리듀서는 state(이전 상태)와 action을 인자로 받습니다.
+=> createSlice를 통해 리듀서와 액션 크리에이터를 자동으로 결합합니다.
+
+
+

@@ -1,0 +1,40 @@
+1. store
+1-1. ReturnType
+=> typescript의 유틸리티 타입으로 주어진 함수의 반환 값의 타입을 추론하는데 사용됩니다.
+
+1-2. store.getState
+=> Redux store의 상태를 반환하는 함수입니다. (현재 상태 트리를 반환하는 함수입니다.)
+=> Redux Store는 전체 애플리케이션 상태가 저장되고, 이 상태를 조회하는 방법이 getStore입니다.
+=> 즉, 개별의 slice의 상태 상태를 반환합니다.
+
+1-3. RootState
+=> Redux Store의 전체 상태 타입을 의미합니다.
+=> type RootState = ReturnType<store.getState()>이 반환하는 상태 객체 타입을 나타냅니다.
+
+1-4. export type RootState = ReturnType<typeof store.getState>
+=> store.getState는 {slice : ()=>{}, slice2 : ()=>{}} 를 반환합니다.
+=> typeof를 통해 ()=>State 함수 타입을 가져옵니다.
+=> ReturnType<>를 통해 함수가 반환하는 state 타입을 가져와서 할당합니다.
+
+1-5. useSelector에서 자동 타입 추론
+=> store의 reducer 객체의 키로 접근하기 떄문에 타입이 자연스럽게 추론이 가능합니다.
+
+
+2. export type AppDispatch = typeof store.dispatch;
+2-1. useDispatch를 사용할 떄 TS로 안전한 타입을 제공하기 위해 필요한 선언입니다.
+=> dispatch 함수가 정확한 액션 타입만 허용하도록 만들어줍니다.
+
+2-2. store.dispatch를 통해 액션을 리듀서에 전달하고, 상태를 업데이트합니다.
+
+2-3. typeof store.dispatch는 store에 연결된 모든 액션 생성자들을 타입으로 포함하는 함수의 타입을 나타냅니다.
+=> slice에 reducers에 setDate가 존재할 떄 setDate를 허용하게 한다...
+
+2-4. useDispatch 타입은 Dispatch<any>로 설정되어 있습니다.
+2-5. const dispatch = useDispatch<AppDispatch>();로 타입을 설정하여 사용해야 보호할 수 있습니다.
+
+2-6. 올바른 액션 생성자를 사용하고 있는가?/ 전달된 payload의 타입이 지켜지고 있는가?
+=> 그렇습니다.
+
+
+
+

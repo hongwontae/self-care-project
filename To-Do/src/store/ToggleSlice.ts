@@ -8,7 +8,7 @@ const initialState : ToogleState = {
     isDate : null
 }
 
-const toggleSlice  = createSlice({
+const toggleSlice  = createSlice({  
     name : 'toggle',
     initialState,
     reducers : {

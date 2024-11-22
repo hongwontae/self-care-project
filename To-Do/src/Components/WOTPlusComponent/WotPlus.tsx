@@ -3,7 +3,7 @@ import { useRef } from "react";
 import {PostResponse} from '../../type/WayOfThinking-Type/PostResonseType'
 
 interface mutateType {
-    mutate : UseMutateFunction<PostResponse, Error, string>
+    mutate : UseMutateFunction<PostResponse, Error, {line : string, highlight : boolean}>
 }
 
 function WotPlus({mutate} : mutateType) {
@@ -17,7 +17,7 @@ function WotPlus({mutate} : mutateType) {
       if(wotRef.current.value === '' || wotRef.current.value.length < 4){
         return;
       }
-     mutate(wotRef.current.value) 
+     mutate({line : wotRef.current.value, highlight : false})
      wotRef.current.value = '';
     }
   }
@@ -25,7 +25,7 @@ function WotPlus({mutate} : mutateType) {
   return (
     <>
       <div className="flex flex-col items-center">
-        <label htmlFor="wot" className="text-3xl font-bold text-custom-wot-label-color mb-4 font-custom-Ubuntu">
+        <label htmlFor="wot" className="text-4xl font-bold text-custom-wot-label-color mb-6 font-custom-Ubuntu">
           Way of Thinking
         </label>
         <input

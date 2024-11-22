@@ -6,6 +6,7 @@ const WotController = require('../controller/WayOfThinkingController');
 
 router.get('/all', WotController.getAll);
 router.post('/save/one', WotController.postOne);
+router.post('/highlight/:id', WotController.updateLine)
 router.delete('/delete/:id', WotController.deleteOne);
 
 

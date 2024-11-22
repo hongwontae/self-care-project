@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { forwardRef } from "react";
 import { DeleteOne } from "../../http/WayOfThinkingHttp/DeleteOne";
+import { LineHightlight } from "../../http/WayOfThinkingHttp/LineHighlightPost";
 
 type stateProps = {
   line: string;
@@ -16,8 +17,6 @@ const WayOfThinkingModal = forwardRef<HTMLDialogElement, WayOfThinkingProps>(
   function WayOfThinkingModal({ lineData, modalDownHandler }, ref) {
     const queryClient = useQueryClient();
 
-    console.log(lineData)
-
     const { mutate } = useMutation<
       { id: number; line: string },
       Error,
@@ -27,6 +26,16 @@ const WayOfThinkingModal = forwardRef<HTMLDialogElement, WayOfThinkingProps>(
       onSuccess: () => {
         console.log("delete success");
         queryClient.invalidateQueries({ queryKey: ["wot-all"] });
+        modalDownHandler();
+      },
+    });
+
+    const { mutate: updateLineMutate } = useMutation({
+      mutationFn: LineHightlight,
+      onSuccess: () => {
+        console.log("update line");
+        queryClient.invalidateQueries({ queryKey: ["wot-all"] });
+        modalDownHandler();
       },
     });
 
@@ -38,23 +47,33 @@ const WayOfThinkingModal = forwardRef<HTMLDialogElement, WayOfThinkingProps>(
           onClose={modalDownHandler}
         >
           <p>
-            Do you want to delete{" "}
+            Do you want to delete or Hightlight{" "}
             <p className="font-bold inline">{lineData?.line}</p>?
           </p>
-          <div className="flex justify-end mr-6 gap-4 mt-2">
+          <div className="grid grid-cols-5 gap-2 mt-4">
+            <button
+              className="p-[0.3rem] col-span-1 bg-red-200 rounded-lg font-mono col-start-1 col-span-2 "
+              onClick={() => {
+                if (!lineData?.id) {
+                  return;
+                }
+                updateLineMutate(lineData.id);
+              }}
+            >
+              Highlight
+            </button>
             <button
               onClick={() => {
-                if(lineData?.id){
-                    mutate({id : lineData.id})
-                    modalDownHandler()
+                if (lineData?.id) {
+                  mutate({ id: lineData.id });
                 }
               }}
-              className="p-[0.3rem] bg-red-200 rounded-lg"
+              className="p-[0.3rem] bg-red-200 rounded-lg font-mono col-start-4"
             >
               Yes
             </button>
             <button
-              className="p-[0.3rem] bg-red-200 rounded-lg"
+              className="p-[0.3rem] bg-red-200 rounded-lg font-mono col-start-5"
               onClick={modalDownHandler}
             >
               No

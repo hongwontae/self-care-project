@@ -35,3 +35,13 @@
     }
 
 }
+
+
+2. forwardRef
+2-1. forwardRef를 정의할 떄는 forwardRef<refType, propsType>으로 제네릭에 ref와 props 타입을 할당하면 됩니다.
+
+
+3. 부모가 여러 ref를 전달할 떄
+3-1. 부모 컴포넌트에서 ref를 정의하고 자식 컴포넌트에게 내려줍니다.
+3-2. 자식 컴포넌트에서 props로 받은 ref의 타입을 설정하고 element에 ref에 할당합니다.
+=> 이 떄 타입은 React.refObject<HTMLInputElement>처럼 설정합니다.

@@ -1,18 +1,25 @@
 import { useRef, useState } from "react";
-import { getDataType } from "../../type/WayOfThinking-Type/GetResponseType";
 import WayOfThinkingModal from "./WayOfThinkingModal";
 
 type WayOfThinkingLinesProps = {
-  item: getDataType;
+  item: {
+    wotId : number;
+    wotLine : string;
+    highlight : boolean;
+    createdAt : string;
+    updatedAt : string
+  };
+  highlightTailwind? : string | undefined
 };
 
 type stateProps = {
   line : string
   id : number
+
 }
 
 
-function WayOfThinkingLine({ item }: WayOfThinkingLinesProps) {
+function WayOfThinkingLine({ item, highlightTailwind }: WayOfThinkingLinesProps) {
   const [lineData, setLineData] = useState<stateProps| null>(null);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -37,7 +44,7 @@ function WayOfThinkingLine({ item }: WayOfThinkingLinesProps) {
       <div className="bg-slate-400 p-2 w-3/5 text-center rounded-lg font-custon-Bangers">
         <div
           onClick={() => modalOpenHandler(item.wotLine, item.wotId)}
-          className="text-3xl font-bold text-custom-letter-color"
+          className={`text-3xl font-bold text-custom-letter-color m-auto ${highlightTailwind || ''}`}
         >
           {item.wotLine}
         </div>
