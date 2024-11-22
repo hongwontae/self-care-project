@@ -4,6 +4,7 @@ import { PostOne } from "../../http/WayOfThinkingHttp/PostOne";
 import { getAll } from "../../http/WayOfThinkingHttp/GetAll";
 import WayOfThinkingLines from "../../Components/WOTShowComponents/WayOfThinkingLines";
 import { GetAllType } from "../../type/WayOfThinking-Type/GetResponseType";
+import Loading from "../../Components/LoadingComponent/Loading";
 
 function WayOfThinking() {
   
@@ -29,7 +30,7 @@ function WayOfThinking() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading></Loading>;
   }
 
   return (
