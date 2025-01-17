@@ -1,10 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import WotPlus from "../../Components/WOTPlusComponent/WotPlus";
+import WotPlus from "../../components/WOTPlusComponent/WotPlus";
 import { PostOne } from "../../http/WayOfThinkingHttp/PostOne";
 import { getAll } from "../../http/WayOfThinkingHttp/GetAll";
-import WayOfThinkingLines from "../../Components/WOTShowComponents/WayOfThinkingLines";
+import WayOfThinkingLines from "../../components/WOTShowComponents/WayOfThinkingLines";
 import { GetAllType } from "../../type/WayOfThinking-Type/GetResponseType";
-import Loading from "../../Components/LoadingComponent/Loading";
+import Loading from "../../components/LoadingComponent/Loading";
 
 function WayOfThinking() {
   

@@ -1,5 +1,5 @@
 // Model
-const { Sequelize } = require("sequelize");
+const { Sequelize, Op } = require("sequelize");
 const TodoModel = require("../model/TodoModel");
 
 // util function
@@ -7,10 +7,11 @@ const Formatted = require("../util/FormattedDateFunction");
 
 exports.getAll = async (req, res, next) => {
   const date = req?.query?.date;
-  console.log(date);
   if (!date) {
     try {
-      const allTodo = await TodoModel.findAll();
+      const allTodo = await TodoModel.findAll({
+        order : [['todo_date', 'ASC']]
+      });
       return res.json(allTodo);
     } catch (error) {
       console.log(error);

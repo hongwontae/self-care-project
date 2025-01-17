@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import TodoMainComponent from "../../Components/HomeComponent/TodoMainComponent";
+import TodoMainComponent from "../../components/HomeComponent/TodoMainComponent";
 import {getAllTodo} from '../../http/TodoHttp/getTodos';
 import {nowMonthGetDays} from '../../http/TodoHttp/GetDays';
-import Loading from "../../Components/LoadingComponent/Loading";
+import Loading from "../../components/LoadingComponent/Loading";
 import { useSelector } from "react-redux";
 import {RootState} from '../../store/store';
 import {Todo} from '../../type/TodoType/TodoInterface';
-import Error from '../../Components/ErrorComponent/Error'
+import Error from '../../components/ErrorComponent/Error'
 
 
 

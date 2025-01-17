@@ -5,18 +5,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Todo-Pages
-import HomePage from "./Pages/Home/HomePage";
-import Layout from "./Pages/Layout/Layout";
-import ToDoPlusPage from "./Pages/ToDoPlus/ToDoPlusPage";
-import UpdateTodoPage from "./Pages/Update/UpdateTodoPage";
+import HomePage from "./pages/Home/HomePage";
+import Layout from "./pages/Layout/Layout";
+import ToDoPlusPage from "./pages/ToDoPlus/ToDoPlusPage";
+import UpdateTodoPage from "./pages/Update/UpdateTodoPage";
 
 // way-of-thinking Pages
-import WayOfThinking from "./Pages/WOT/WayOfThinking";
+import WayOfThinking from "./pages/WOT/WayOfThinking";
 
 
 // error
-import Loading from "./Components/LoadingComponent/Loading";
-import Error from "./Components/ErrorComponent/Error";
+import Loading from "./components/LoadingComponent/Loading";
+import Error from "./components/ErrorComponent/Error";
 
 
 const queryClient = new QueryClient();

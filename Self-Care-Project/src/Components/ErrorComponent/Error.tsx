@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import Navigation from "../../Pages/Navigation/Navigation";
+import Navigation from "../../pages/Navigation/Navigation";
 
 function Error({error : queryError} : {error : Error}) {
   const error = useRouteError();
