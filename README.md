@@ -104,6 +104,9 @@ function TodoMainComponent({ data, dayData }: TodoMainComponentProps) {
 
   ![Image](https://github.com/user-attachments/assets/d1bc0556-67ed-4643-a333-3b7db012025e)
 
+ <br/>
+
+  - Some Code
   ```javascript
  // type
 interface childProps {
@@ -139,6 +142,214 @@ interface childProps {
         </div>
    //...
  ```
+<br/>
+
+ - 3-3. Detail Modal
+ 
+ 일정을 상세히 볼 수 있습니다.
+
+ Update, Delete 작업이 가능합니다.
+
+ ![Image](https://github.com/user-attachments/assets/ea6bffe2-133c-404b-954d-17332411c870)
+
+ <br/>
+
+  - Some Code
+ ```javascript
+           <DeleteModal
+          id={todoOne?.todo_id}
+          ref={dialogRef}
+          deleteCloseHandler={deleteCloseHandler}
+          title={todoOne?.todo_title}
+          modalDownHandler={modalDownHandler}
+        ></DeleteModal>
+        <dialog
+          onClose={modalDownHandler}
+          ref={ref}
+          className="p-6 w-8/12 rounded-lg font-custome-Poppins bg-stone-500"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div className="font-bold text-custom-letter-color mb-4 text-2xl">
+              Todo : {todoOne && todoOne?.todo_title}
+            </div>
+            <div className="text-white">
+              <div className="inline font-bold text-black">
+                Departure Time :{" "}
+              </div>
+              {departure}
+            </div>
+            <div className="text-white">
+              <div className="inline font-bold text-black">
+                Scheduled Time :{" "}
+              </div>
+           // ....
+```
+
+ <br/>
+
+ - 3-4. **Update, Delete Page**
+
+<br/>
+
+![Image](https://github.com/user-attachments/assets/dae16c52-c7d9-494d-8ddc-33b2dab54a3e)
+
+<br/>
+
+![Image](https://github.com/user-attachments/assets/046817ae-fca2-43e7-a43a-5ce731031b32)
+
+<br/>
+
+ - Some Code
+
+ ```javascript
+function UpdateTodoPage() {
+  const navigationType = useNavigationType();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const storedId = sessionStorage.getItem("todo")
+    ? sessionStorage.getItem("todo")
+    : null;
+
+  const { data } = useQuery({
+    queryKey: ["update-todo", storedId],
+    queryFn: () => {
+      if (storedId) {
+        return getTodoOne(storedId);
+      } else {
+        throw new Error("sesstion id가 존재하지 않습니다.");
+      }
+    },
+  });
+
+  const { mutate } = useMutation({
+    mutationFn: update,
+    onSuccess: () => {
+      console.log("Success Update");
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      queryClient.invalidateQueries({ queryKey: ["update-todo", storedId] });
+      navigate("/");
+    },
+  });
+
+  useEffect(() => {
+    return () => {
+      if (
+        navigationType === NavigationType.Push ||
+        navigationType === NavigationType.Pop
+      ) {
+        queryClient.invalidateQueries({ queryKey: ["update-todo", storedId] });
+        sessionStorage.removeItem("todo");
+      }
+    };
+  }, [navigationType, queryClient, storedId]);
+```
+ <br/>
+
+ - 3-5. Way of Thinking Page
+
+ 지켜야 할 생활 방식이나 규칙들을 명시하는 Page입니다.
+
+ delete, Highlight 기능을 사용할 수 있습니다.
+
+ 
+![Image](https://github.com/user-attachments/assets/f58d124a-9a2b-4cd9-96a3-2ed09d68f492)
+
+![Image](https://github.com/user-attachments/assets/9581cb7b-3ba4-458b-95cf-65f4c97916ca)
+
+![Image](https://github.com/user-attachments/assets/0088749c-32dd-4985-bbe6-76ed7a9bae21)
+
+ <br/>
+
+ - Some Code
+```javascript
+function WayOfThinking() {
+  
+  const client = useQueryClient()
+
+  const { mutate } = useMutation({
+    mutationFn: PostOne,
+    onSuccess : ()=>{
+      console.log('refresh')
+      client.invalidateQueries({queryKey : ['wot-all']});
+    }
+  });
+
+  const { data, isError, error, isLoading } = useQuery<GetAllType, Error>({
+    queryKey: ["wot-all"],
+    queryFn: () => getAll(),
+    staleTime : 10 * 60 * 1000
+  });
+
+  if (isError) {
+    console.log(error);
+    return <div>Error...</div>;
+  }
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
+  return (
+    <>
+      <div>
+        <WotPlus mutate={mutate}></WotPlus>
+        <WayOfThinkingLines data={data?.data || []}></WayOfThinkingLines>
+      </div>
+    </>
+  );
+}
+
+export default WayOfThinking;
+```
+
+<br/>
+
+
+4. **Backend**
+
+ - 4-1. Express.js
+ - 4-2. Sequelize
+ - 4-3. MySQL
+ - 4-4. Error Handling
+
+  - Preview
+ ```javascript
+exports.getAll = async (req, res, next) => {
+  const date = req?.query?.date;
+  if (!date) {
+    try {
+      const allTodo = await TodoModel.findAll({
+        order : [['todo_date', 'ASC']]
+      });
+      return res.json(allTodo);
+    } catch (error) {
+      console.log(error);
+      const err = new Error();
+      err.location = "controller";
+      err.message = "getAll find fail";
+      err.status = false;
+      return next(err);
+    }
+  }
+
+  if (date) {
+    const formatedDate = Formatted(date);
+
+    const dateTodos = await TodoModel.findAll({
+      where: Sequelize.where(
+        Sequelize.fn("DATE", Sequelize.col("todo_date")),
+        formatedDate
+      ),
+    });
+    
+    console.log(dateTodos);
+    return res.json(dateTodos)
+
+  }
+};
+```
+
+
 
 
 
