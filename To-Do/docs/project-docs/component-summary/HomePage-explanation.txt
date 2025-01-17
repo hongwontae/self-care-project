@@ -1,0 +1,12 @@
+1. 애플리케이션에 진입하지마자 To-do 리스트가 보이길 원함
+=> useQuery를 통해 get 쿼리를 실행하여 데이터를 보여줌
+
+1-1. isError, error, Loading을 통해 다양한 상황 대처
+
+1-2. data를 받은 후 하위 컴포넌트에서 렌더링
+=> tailwind grid를 사용해서 브라우저 width에 따라 넓이를 조정
+=> 할일 시간이 현재 시간보다 지났다면 tailwind를 통해 조건부 css 처리
+
+
+1-3. 받아온 데이터를 클릭 시 Modal를 통해 Delete, Update, Close를 구현
+=> 

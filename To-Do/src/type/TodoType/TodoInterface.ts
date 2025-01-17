@@ -14,3 +14,9 @@ export interface noneIdTodo {
     todo_departure : string;
     todo_add_items: string;
 }
+
+export interface getOne{
+    status : boolean,
+    message : string,
+    data : Todo
+}

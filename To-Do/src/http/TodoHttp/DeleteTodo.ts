@@ -1,8 +1,5 @@
-interface Todo {
-    status : boolean,
-    message : string,
-    data : []
-}
+import {Todo} from '../../type/TodoType/TodoInterface'
+
 
 export async function DeleteTodo(id : number | undefined) : Promise<Todo>{
     const response = await fetch(`http://localhost:7070/todo/delete/${id}`, {

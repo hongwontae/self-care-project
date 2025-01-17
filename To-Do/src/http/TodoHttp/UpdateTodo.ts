@@ -1,4 +1,4 @@
-import {HttpNoneDataResponse} from '../type/HttpResponse'
+import {HttpNoneDataResponse} from '../../type/TodoType/HttpResponse'
 
 interface TodoParameter {
     todo_id : number | undefined | string | null;

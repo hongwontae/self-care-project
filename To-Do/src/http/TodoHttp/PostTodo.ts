@@ -1,5 +1,5 @@
-import { noneIdTodo } from "../type/TodoInterface";
-import {HttpResponse} from '../type/HttpResponse'
+import { noneIdTodo } from "../../type/TodoType/TodoInterface"
+import {HttpResponse} from '../../type/TodoType/HttpResponse'
 
 export async function todoPost({
   todo_title,

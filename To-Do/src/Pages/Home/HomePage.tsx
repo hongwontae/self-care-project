@@ -5,7 +5,8 @@ import {nowMonthGetDays} from '../../http/TodoHttp/GetDays';
 import Loading from "../../Components/LoadingComponent/Loading";
 import { useSelector } from "react-redux";
 import {RootState} from '../../store/store';
-import {Todo} from '../../type/TodoInterface';
+import {Todo} from '../../type/TodoType/TodoInterface';
+import Error from '../../Components/ErrorComponent/Error'
 
 
 
@@ -32,7 +33,7 @@ function HomePage(){
     }
 
     if(isError){
-        return <div>Error : {error.message}</div>
+        return <Error error={error}></Error>
     }
 
     return(

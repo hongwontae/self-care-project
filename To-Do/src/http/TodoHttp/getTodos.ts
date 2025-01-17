@@ -1,4 +1,4 @@
-import {Todo} from '../../type/TodoInterface';
+import {Todo} from '../../type/TodoType/TodoInterface';
 
 
 export async function getAllTodo(date? : string | null) : Promise<Todo[]>{

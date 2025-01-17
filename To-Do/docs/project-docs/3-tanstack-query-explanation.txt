@@ -1,0 +1,8 @@
+1. 구체적인 설정
+1-1. 루트 파일인 App.tsx에서 QueryClinet를 import 이후 변수에 할당
+1-2. tanstack-query를 초기화하기 위해 QueryClientProvider 컴포넌트를 가져와서 react-router를 덮음
+1-3. QueryClientProvider의 client의 속성값으로 이전에 만든 변수 할당
+
+
+2. explanation
+=> docs/concepts-docs/2-1 or 2-2 or 2-3

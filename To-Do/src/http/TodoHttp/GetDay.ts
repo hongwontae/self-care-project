@@ -1,4 +1,4 @@
-import {HttpResponse} from '../../type/HttpResponse';
+import {HttpResponse} from '../../type/TodoType/HttpResponse';
 
 export async function getDay(date : string):Promise<HttpResponse>{
 

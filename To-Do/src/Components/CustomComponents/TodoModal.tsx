@@ -3,7 +3,7 @@ import { formatDate } from "../../util/DateFormatt";
 import { buttonTailwindCss } from "../TodoPlusComponent/Todo-Tailwind";
 import DeleteModal from "./DeleteModal";
 import { useNavigate } from "react-router-dom";
-import {Todo} from '../../type/TodoInterface'
+import {Todo} from '../../type/TodoType/TodoInterface'
 
 interface todoModalProps {
   modalDownHandler: () => void;

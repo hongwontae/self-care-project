@@ -1,10 +1,4 @@
-import {Todo} from '../..//type/TodoInterface';
-
-interface getOne{
-    status : boolean,
-    message : string,
-    data : Todo
-}
+import {getOne} from '../..//type/TodoType/TodoInterface';
 
 export async function getTodoOne(id : number | string) : Promise<getOne>{
     const response = await fetch(`http://localhost:7070/todo/get-one/${id}`);

@@ -1,9 +1,10 @@
 import { useRouteError } from "react-router-dom";
 import Navigation from "../../Pages/Navigation/Navigation";
 
-function Error() {
+function Error({error : queryError} : {error : Error}) {
   const error = useRouteError();
   console.log(error);
+  console.log(queryError)
   return (
     <>
       <div className="grid grid-rows-layout min-h-screen bg-slate-800">

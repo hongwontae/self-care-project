@@ -3,7 +3,7 @@ import ToggleSlice from './ToggleSlice';
 
 export const store = configureStore({
     reducer : {
-        isDate : ToggleSlice
+        isDate : ToggleSlice,
     }
 });
 

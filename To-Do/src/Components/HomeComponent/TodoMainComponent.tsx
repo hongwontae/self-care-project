@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { formatDate } from "../../util/DateFormatt";
 import TodoModal from "../CustomComponents/TodoModal";
 import DaySelect from "../CustomComponents/DaySelect";
-import {Todo} from '../../type/TodoInterface';
+import {Todo} from '../../type/TodoType/TodoInterface';
 
 
 interface TodoMainComponentProps {
@@ -45,7 +45,6 @@ function TodoMainComponent({ data, dayData }: TodoMainComponentProps) {
             const date = formatDate(ele.todo_departure);
             const sDate = formatDate(ele.todo_date);
             const dateBool = new Date(ele.todo_date) < new Date()
-            console.log(dateBool)
             return (
               <div
                 key={ele.todo_id}

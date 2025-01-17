@@ -1,4 +1,4 @@
-export async function nowMonthGetDays(){
+export async function nowMonthGetDays() : Promise<string[]>{
     const response = await fetch('http://localhost:7070/date/month/all');
 
 
