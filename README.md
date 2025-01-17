@@ -30,6 +30,8 @@
 - Redux-Toolkit
 - Tailwind
 
+<br/>
+
 
 3. **Features**
 
@@ -91,6 +93,52 @@ function TodoMainComponent({ data, dayData }: TodoMainComponentProps) {
           })}
       </div>
 ```
+
+<br/>
+
+ - 3-2. **Plus Form Page**
+
+  일정을 추가하는 Form Page입니다.
+
+  Form을 채운 후 HomePag로 redirect 합니다.
+
+  ![Image](https://github.com/user-attachments/assets/d1bc0556-67ed-4643-a333-3b7db012025e)
+
+  ```javascript
+ // type
+interface childProps {
+  titleRef: React.RefObject<HTMLInputElement>;
+  descRef: React.RefObject<HTMLTextAreaElement>;
+  dateRef: React.RefObject<HTMLInputElement>;
+  addRef: React.RefObject<HTMLInputElement>;
+  departureRef: React.RefObject<HTMLInputElement>;
+  buttonClickHandler: () => void;
+  resetHandler: () => void;
+}
+// ...
+<div className="flex flex-col gap-1 justify-center items-center w-full">
+          <label htmlFor="title" className="font-bold text-[1.2rem]">
+            To Do-Title
+          </label>
+          <input
+            ref={titleRef}
+            className="text-center text-black rounded-lg p-1 w-1/2 max-plus-page-1:w-10/12"
+            type="text"
+            id="title"
+          ></input>
+        </div>
+        <div className="flex flex-col gap-1 items-center w-full">
+          <label htmlFor="departure time" className="font-bold text-[1.2rem]">
+            Departure Time
+          </label>
+          <input
+            type="datetime-local"
+            ref={departureRef}
+            className="text-center text-black rounded-lg p-1 w-1/2 max-plus-page-1:w-10/12 max-plus-page-2:w-8/12"
+          ></input>
+        </div>
+   //...
+ ```
 
 
 
